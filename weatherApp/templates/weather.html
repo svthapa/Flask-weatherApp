@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{url_for('static', filename='weather.css')}}">
+
+<title>How is the Weather.</title>
+
+</head>
+<body>
+<div class="jumbotron">
+  <h1>Weather App</h1>
+  <p>Check the current weather of any place here.</p>
+</div>
+{%with messages = get_flashed_messages(with_categories=true)%}
+  {%if messages %}
+   {%for category, message in messages %}
+  <div class="alert alert-{{category}} alert-dismissible" role="alert">
+    <h3 id="message">{{message}}<h3>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span id="close" aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {%endfor%}
+  {%endif%}
+  {%endwith%}
+
+<div class = "form-container">
+  <form action="{{url_for('weatherApp.home_get')}}" method="POST">
+    <div class="form-group">
+      <label for="city">Enter City Name</label>
+      <input type="text" name="city" class="form-control" placeholder="City Name" required>
+    </div>
+    <input type="submit" value="Add City" class="btn btn-primary">
+  </form>
+</div>
+{%for weather in weather_data%}
+<div class="box">
+  <article class="media">
+  <div class="media-left">
+    <figure class="image is-50x50">
+      <img src="http://openweathermap.org/img/w/{{weather.icon}}.png" alt="image">
+    </figure>
+  </div>
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <span class="title">{{weather.city}}</span>
+        <br>
+        <span class="subtitle">{{weather.temp}} &deg; Fahrenheit</span>
+        <br>
+        <span class="description">{{weather.description}}</span>
+      </p>
+    </div>
+</div>
+<form action="{{url_for('weatherApp.delete_city',city=weather.city)}}">
+<button type="submit" id="del" class="close" aria-label="Close" >
+  <span id="close" aria-hidden="true">&times;</span>
+</button>
+</form>
+</article>
+</div>
+<br>
+{%endfor%}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

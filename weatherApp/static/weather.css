@@ -1,0 +1,57 @@
+.jumbotron{
+  background-color: powderblue;
+}
+.form-container {
+    width: 30%;
+    position: relative;
+    left: 400px;
+}
+
+.box{
+  background-color: #FAEBD7;
+  position: relative;
+  left: 500px;
+  top: 100px;
+  width: 300px;
+  height:200px;
+}
+.box .title{
+  font-size: 24pt;
+  position: relative;
+  bottom: 25px;
+  left: 60px;
+}
+.box .subtitle{
+  font-size: 16pt;
+  position: relative;
+  left: 55px;
+  bottom: 20px;
+}
+.box .description{
+  font-size: 16pt;
+  position: relative;
+  left: 55px;
+  bottom: 20px;
+}
+.alert{
+  width: 450px;
+  height: 50px;
+  position: relative;
+  left: 30%;
+}
+#close{
+  position: relative;
+  bottom: 60px;
+}
+#message{
+font-size: 16pt;
+text-align: center;
+position: relative;
+bottom: 20px;
+}
+#del{
+  color: black;
+  position: relative;
+  bottom: 80px;
+  right: 20px;
+}
